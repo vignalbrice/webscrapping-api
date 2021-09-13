@@ -5,7 +5,6 @@ from bs4 import BeautifulSoup
 import flask
 from flask import request, jsonify
 from selenium import webdriver
-import time
 from flask import Flask
 from flask_cors import CORS
 
