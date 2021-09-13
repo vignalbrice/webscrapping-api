@@ -3,7 +3,7 @@ alabaster==0.7.12
 anaconda-client
 applaunchservices==0.2.1
 applicationinsights==0.11.9
-setuptools==50.0.0
+setuptools==41.0.0
 beautifulsoup4
 Flask
 Flask-Cors
