@@ -6,14 +6,7 @@ applicationinsights==0.11.9
 beautifulsoup4
 Flask
 Flask-Cors
-py
 pymongo
-PyMySQL
-pyparsing
-python-dateutil
-python-docx
-python-jsonrpc-server 
-python-language-server 
 regex 
 requests
 requests-oauthlib
