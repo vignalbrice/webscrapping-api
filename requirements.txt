@@ -12,3 +12,4 @@ requests
 requests-oauthlib
 pyobjc-framework-CoreMIDI==7.0
 selenium
+setuptools
