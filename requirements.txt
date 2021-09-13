@@ -10,4 +10,5 @@ pymongo
 regex 
 requests
 requests-oauthlib
+pyobjc-framework-CoreMIDI==7.2
 selenium
