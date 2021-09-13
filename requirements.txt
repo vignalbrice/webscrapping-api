@@ -12,4 +12,5 @@ regex
 requests
 requests-oauthlib
 pyobjc-framework-CoreMIDI==7.0
+pyobjc==7.3
 selenium
