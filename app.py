@@ -23,7 +23,7 @@ morePopularContainer = soup.find('div', attrs={'class': 'col'})
 lastEpisodes = []
 animeInProgress = [] 
 morePopular = []
-for row in lastContainer.findAll('div', attrs={'class', 'ma-thumbnail'}):
+for row in lastContainer.find_all('div', attrs={'class', 'ma-thumbnail'}):
   lastEp = {}
   try:
     lastEp['img'] = row.find_all("img")[1]["src"]
@@ -36,7 +36,7 @@ for row in lastContainer.findAll('div', attrs={'class', 'ma-thumbnail'}):
   except TypeError: 
     continue
   
-for row in animeContainer.findAll('a'):
+for row in animeContainer.find_all('a'):
   animeProg = {}
   try:
     animeProg['img'] = row.find('div', {'class': 'ma-lazy-wrapper'}).find('img', {'class': 'lazy'})['data-src']
@@ -47,7 +47,7 @@ for row in animeContainer.findAll('a'):
   except TypeError: 
     continue
   
-for row in morePopularContainer.findAll('a'):
+for row in morePopularContainer.find_all('a'):
   morePop = {}
   try:
     morePop['img'] = row.find('div', {'class': 'ma-lazy-wrapper'}).find('img', {'class': 'lazy'})['data-src']
