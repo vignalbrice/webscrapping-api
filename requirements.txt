@@ -6,6 +6,7 @@ colorama==0.4.4
 cors==1.0.1
 filelock==3.0.12
 Flask==2.0.1
+Flask-Cors==3.0.10
 future==0.18.2
 gevent==21.8.0
 greenlet==1.1.1
