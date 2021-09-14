@@ -23,7 +23,6 @@ lastEpisodes = []
 animeInProgress = [] 
 morePopular = []
 
-lastContent = lastContainer.find('div', attrs={'class': 'd-block'})
 for row in lastContainer.find_all('div', {'class': 'col-lg-3'}):
   lastEp = {}
   try:
