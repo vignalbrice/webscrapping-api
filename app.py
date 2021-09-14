@@ -25,18 +25,6 @@ lastEpisodes = []
 animeInProgress = [] 
 morePopular = []
 
-for row in lastContainer.find_all('div', {'class': 'col-lg-3'}):
-  lastEp = {}
-  try:
-    lastEp['img'] = row.find_all("img")[1]["src"]
-    lastEp['caption'] = row.find('div', {'class': 'overlay'}).find('a', {'class': 'cover'}).find('img')['src']
-    lastEp['published'] = row.find('div', {'class': 'overlay'}).find('span', {'class': 'time'}).contents[0]
-    lastEp['title'] = row.find('div', {'class': 'text'}).find('a', attrs={"class": "title"}).find('div', attrs={'class': 'limit'}).contents[0]
-    lastEp['episode'] = row.find('div', {'class': 'text'}).find('a', attrs={"class": "title"}).find('span', attrs={'class': 'episode'}).contents[0]
-    lastEpisodes.append(lastEp)
-    
-  except TypeError: 
-    continue
   
 for row in animeContainer.find_all('a'):
   animeProg = {}
