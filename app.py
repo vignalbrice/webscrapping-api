@@ -4,7 +4,6 @@ import requests
 from bs4 import BeautifulSoup
 import flask
 from flask import request, jsonify
-from selenium import webdriver
 from flask import Flask
 from flask_cors import CORS
 
@@ -12,9 +11,9 @@ from flask_cors import CORS
 #Get url to scrap datas
 url = 'https://neko-sama.fr'
 #Get request and scrap content
-r = requests.get(url)
+r = requests.get(url).text
 #Call BeautifulSoup package to get the content of html5page
-soup = BeautifulSoup(r.content, 'html5lib')
+soup = BeautifulSoup(r, 'html5lib')
 #Target the div we want to scrap
 lastContainer = soup.find('div', attrs={'class': 'js-last-episode-container'})
 animeContainer = soup.find('div', attrs={'class': 'anime-listing'})
