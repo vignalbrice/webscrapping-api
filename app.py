@@ -15,7 +15,7 @@ url = 'https://neko-sama.fr'
 #Get request and scrap content
 r = requests.get(url, headers=headers).text
 #Call BeautifulSoup package to get the content of html5page
-soup = BeautifulSoup(r, 'html5lib')
+soup = BeautifulSoup(r, 'lxml')
 #Target the div we want to scrap
 lastContainer = soup.find('div', attrs={'class': 'js-last-episode-container'})
 animeContainer = soup.find('div', attrs={'class': 'anime-listing'})
