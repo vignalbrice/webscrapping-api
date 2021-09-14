@@ -8,10 +8,12 @@ from flask import Flask
 from flask_cors import CORS
 
 
+# user agent Mozilla pour indiquer un client navigateur web au site
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
 #Get url to scrap datas
 url = 'https://neko-sama.fr'
 #Get request and scrap content
-r = requests.get(url).text
+r = requests.get(url, headers=headers).text
 #Call BeautifulSoup package to get the content of html5page
 soup = BeautifulSoup(r, 'html5lib')
 #Target the div we want to scrap
