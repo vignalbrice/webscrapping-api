@@ -22,7 +22,9 @@ morePopularContainer = soup.find('div', attrs={'class': 'col'})
 lastEpisodes = []
 animeInProgress = [] 
 morePopular = []
-for row in lastContainer.find_all('div', attrs={'class', 'd-block'}):
+
+lastContent = lastContainer.find('div', attrs={'class': 'd-block'})
+for row in lastContainer.find_all('div', {'class': 'col-lg-3'}):
   lastEp = {}
   try:
     lastEp['img'] = row.find_all("img")[1]["src"]
