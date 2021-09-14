@@ -6,16 +6,17 @@ import flask
 from flask import request, jsonify
 from flask import Flask
 from flask_cors import CORS
-
+import urllib3
 
 # user agent Mozilla pour indiquer un client navigateur web au site
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
 #Get url to scrap datas
 url = 'https://neko-sama.fr'
+http = urllib3.PoolManager()
 #Get request and scrap content
-r = requests.get(url, headers=headers).text
+r = http.request('GET', url, headers=headers)
 #Call BeautifulSoup package to get the content of html5page
-soup = BeautifulSoup(r, 'lxml')
+soup = BeautifulSoup(r.data, 'lxml')
 #Target the div we want to scrap
 lastContainer = soup.find('div', attrs={'class': 'js-last-episode-container'})
 animeContainer = soup.find('div', attrs={'class': 'anime-listing'})
@@ -25,6 +26,18 @@ lastEpisodes = []
 animeInProgress = [] 
 morePopular = []
 
+for row in lastContainer.find_all('div', {'class': 'd-block ma-thumbnail'}):
+  lastEp = {}
+  try:
+    lastEp['img'] = row.find_all("img")[1]["src"]
+    lastEp['caption'] = row.find('div', {'class': 'overlay'}).find('a', {'class': 'cover'}).find('img')['src']
+    lastEp['published'] = row.find('div', {'class': 'overlay'}).find('span', {'class': 'time'}).contents[0]
+    lastEp['title'] = row.find('div', {'class': 'text'}).find('a', attrs={"class": "title"}).find('div', attrs={'class': 'limit'}).contents[0]
+    lastEp['episode'] = row.find('div', {'class': 'text'}).find('a', attrs={"class": "title"}).find('span', attrs={'class': 'episode'}).contents[0]
+    lastEpisodes.append(lastEp)
+    
+  except TypeError: 
+    continue
   
 for row in animeContainer.find_all('a'):
   animeProg = {}
